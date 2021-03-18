@@ -1,0 +1,151 @@
+//*
+
+<style>
+
+  .circle {
+    position: fixed;
+    width: 500px;
+    height: 10px;
+    background-color: red;
+  }
+  canvas {
+  border: 1px solid rgb(211, 211, 211);
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+  :root {
+  --width: 300px;
+  --x-speed: 13s;
+  --y-speed: 7s;
+  --transition-speed: 2.2s;
+}
+
+.blob { 
+  border-radius: 500px;
+  width: var(--width);
+  height: var(--width);
+  background: black;
+  transition: border-radius var(--transition-speed) linear;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.blob-2 {
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.blob-2 .blob {
+  background: pink;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  overflow: hidden;
+  filter: blur(50px) contrast(500);
+}
+
+.x {
+  animation: x var(--x-speed) linear infinite alternate;
+}
+.x2 {
+  animation: x2 var(--x-speed) linear infinite alternate;
+}
+.y {
+  animation: y var(--y-speed) linear infinite alternate;
+}
+
+@keyframes x {
+  100% {
+    transform: translateX(calc(100vw - var(--width)));
+  }
+}
+@keyframes x2 {
+  100% {
+    transform: translateX(calc(-100vw + var(--width)));
+  }
+}
+
+@keyframes y {
+  100% {
+    transform: translateY(calc(100vh - var(--width)));
+  }
+}
+
+
+.inputs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.inputs label {
+  flex: 1;
+}
+.inputs input {
+  width: 100%;
+}
+
+
+  
+    
+</style>
+
+<body></body>
+
+<!-- <script>
+  
+  function createCircle () {
+    const circ = document.createElement('div')
+    circ.className = 'circle'
+    circ.style.left = `${window.innerWidth / 2}px`
+    circ.style.top = `${window.innerHeight / 2}px`
+    console.log(circ)
+    document.body.appendChild(circ)
+    circ.dataset.dx = Math.random() * 4 - 2
+    circ.dataset.dy = Math.random() * 4 - 2
+    circ.update = function () {
+      let dx = parseFloat(circ.dataset.dx)
+      let dy = parseFloat(circ.dataset.dy)
+      let x = parseFloat(circ.style.left)
+      let y = parseFloat(circ.style.top)
+      x += dx
+      if (x <= 0 || x >= window.innerWidth) circ.dataset.dx = -dx
+      y += dy
+      if (y <= 0 || y >= window.innerWidth) circ.dataset.dy = -dy
+      this.style.left = `${x}px`
+      this.style.top = `${y}px`
+    }
+  }
+  
+  for (let i = 0; i < 30; i++) {
+    createCircle()
+  }
+  
+  function animate () {
+    requestAnimationFrame(animate)
+    const circs = document.querySelectorAll('.circle')
+    circs.forEach(c => c.update())
+  }
+  
+  animate() -->
+
+
+<!-- </script> -->
+
+<script src="main.js"></script>
+<div class="blob-wrap x">
+  <div class="blob y"></div>
+</div>
+
+<div class="blob-wrap blob-2 x2">
+  <div class="blob y"></div>
+</div>
+
